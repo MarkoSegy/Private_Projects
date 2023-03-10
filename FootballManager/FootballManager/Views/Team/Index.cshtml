@@ -1,0 +1,87 @@
+﻿@model IEnumerable<FootballManager.Models.Team>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </th>
+            <th>
+                Players
+                @*@Html.DisplayNameFor(model => model.PersonList)*@
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.ImagePath)*@
+                    @*<img src="@Html.DisplayFor(modelItem => item.ImagePath)" alt="a description of the image">*@
+
+                    <img class="rounded-circle" src="@item.ImagePath" alt="@item.Name" style="width: 120px" height="120" />
+                </td>
+                <td>
+                    <table>
+                        <tfoot>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Birthday</th>
+                                <th>Role</th>
+                                <th>Picture</th>
+                            </tr>
+                            <form>
+                                
+                                @foreach (var person in FootballManager.Controllers.PersonController.PlayerListWithoutNulls())
+                                {
+                                    if (person.Team.Name == item.Name)
+                                    {
+<tr>
+                                        <td>@person.Firstname</td>
+                                        <td>@person.Lastname</td>
+                                        <td>@person.Birthday</td>
+                                        <td>@person.PersonRole</td>
+                                        <td><img class="rounded-circle" src="@person.ImagePath" alt="@person.ImagePath" style="width: 70px" height="70" /></td>
+                                    </tr>
+                                    }
+                                    }
+                            </form>
+                            </tfoot>
+                        </table>
+                    </td>
+                    @*  *@
+                    <td class="align-middle">
+                        <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i>Edit </a> |
+                        <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye"></i>Details </a> |
+                        <a class="btn btn-danger text-white" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i>Delete </a>
+                    </td>
+                    @*  *@
+
+                </tr>
+            }
+    </tbody>
+</table>

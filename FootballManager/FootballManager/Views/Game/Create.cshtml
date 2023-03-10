@@ -1,0 +1,71 @@
+﻿@model FootballManager.Models.Game
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+<div>
+</div>
+<h4>Game</h4>
+<br />  
+    @Html.Raw(TempData["errorImpossible"])
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateRandom">
+                <input type="submit" value="Create Random Game" class="btn btn-primary" />
+            </form>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="GameDate" class="control-label"></label>
+                <input asp-for="GameDate" class="form-control" />
+                <span asp-validation-for="GameDate" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group dropdown ">
+                Team auswahl 1 <br />
+                <select asp-for="Team1.Name" name="Team1.Name">
+                    @foreach (var item in FootballManager.Controllers.TeamController.teamListe)
+                    {
+                        <option value="@item.Name">@item.Name</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group dropdown ">
+                Team auswahl 2 <br />
+                <select asp-for="Team2.Name" name="Team2.Name">
+                    @foreach (var item in FootballManager.Controllers.TeamController.teamListe)
+                    {
+                        <option value="@item.Name">@item.Name</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="GoalsTeam1" class="control-label"></label>
+                <input asp-for="GoalsTeam1" class="form-control" />
+                <span asp-validation-for="GoalsTeam1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GoalsTeam2" class="control-label"></label>
+                <input asp-for="GoalsTeam2" class="form-control" />
+                <span asp-validation-for="GoalsTeam2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

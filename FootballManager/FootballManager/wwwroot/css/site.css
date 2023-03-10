@@ -1,0 +1,214 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #93a08d;
+    border-color: #3f4636;
+}
+    .btn-primary:hover {
+        background-color: #3f4636;
+        border-color: #93a08d;
+    }
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: yellow;
+  border-color: yellow;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+/*Mein code */
+.nnn {
+    background-color: #eae4e2;
+}
+.back {
+    background-color: #d0ced0;
+}
+.table {
+    background-color: #eae4e2;
+}
+/*#eae4e2 #d0ced0 #add1eb #98b4cb #6693aa*/
+/*#932421 #ed4d45 #dedfe4 #93a08d #3f4636*/
+
+/*Login Modal*/
+
+body {
+    font-family: 'Varela Round', sans-serif;
+}
+
+.modal-login {
+    color: #636363;
+    width: 350px;
+    margin: 80px auto 0;
+}
+
+    .modal-login .modal-content {
+        padding: 20px;
+        border-radius: 5px;
+        border: none;
+    }
+
+    .modal-login .modal-header {
+        border-bottom: none;
+        position: relative;
+        justify-content: center;
+    }
+
+    .modal-login h4 {
+        text-align: center;
+        font-size: 26px;
+        margin: 30px 0 -15px;
+    }
+
+    .modal-login .form-control:focus {
+        border-color: #70c5c0;
+    }
+
+    .modal-login .form-control, .modal-login .btn {
+        min-height: 40px;
+        border-radius: 3px;
+    }
+
+    .modal-login .close {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+    }
+
+    .modal-login .modal-footer {
+        background: #ecf0f1;
+        border-color: #dee4e7;
+        text-align: center;
+        justify-content: center;
+        margin: 0 -20px -20px;
+        border-radius: 5px;
+        font-size: 13px;
+    }
+
+        .modal-login .modal-footer a {
+            color: #999;
+        }
+
+    .modal-login .avatar {
+        position: absolute;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        top: -70px;
+        width: 95px;
+        height: 95px;
+        border-radius: 50%;
+        z-index: 9;
+        background: #60c7c1;
+        padding: 5px;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+    }
+
+        .modal-login .avatar img {
+            width: 100%;
+            height: 85px;
+        }
+         
+
+
+    .modal-login .btn {
+        color: #fff;
+        border-radius: 4px;
+        background: #60c7c1;
+        text-decoration: none;
+        transition: all 0.4s;
+        line-height: normal;
+        border: none;
+    }
+
+        .modal-login .btn:hover, .modal-login .btn:focus {
+            background: #45aba6;
+            outline: none;
+        }
+
+.trigger-btn {
+    display: inline-block;
+    margin: 100px auto;
+}
+#t{
+    color:forestgreen;
+}
+/*MODAL 2*/
+/*.modal-content {
+    height: 500px;
+    width: 700px;
+}*/
+
+/*LOGOUT*/
+#mail{
+    color:limegreen;
+    margin-bottom:0px;
+}
+.list{
+    /*height:59px;*/
+    padding-top:17px;
+}
+.slikaNav img{
+    height:59px;
+    width:59px;
+    border-radius:50px;
+    margin-right:20px;
+}
+
+/*HOME ANIMATION*/

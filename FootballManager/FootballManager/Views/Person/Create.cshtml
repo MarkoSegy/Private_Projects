@@ -1,0 +1,95 @@
+﻿@model FootballManager.Models.Person
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Person</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">  
+        @*<form action="http://localhost:48160/person/createperson?">*@
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                    <label asp-for="Id" class="control-label"></label>
+                    <input asp-for="Id" class="form-control" />
+                    <span asp-validation-for="Id" class="text-danger"></span>
+                </div>*@
+            <div class="form-group">
+                <label asp-for="Firstname" class="control-label"></label>
+                <input asp-for="Firstname" class="form-control" />
+                <span asp-validation-for="Firstname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lastname" class="control-label"></label>
+                <input asp-for="Lastname" class="form-control" />
+                <span asp-validation-for="Lastname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Birthday" class="control-label"></label>
+                <input asp-for="Birthday" class="form-control" />
+                <span asp-validation-for="Birthday" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImagePath" class="control-label"></label>
+                <input asp-for="ImagePath" class="form-control" />
+                <span asp-validation-for="ImagePath" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                    <label asp-for="SaltedPassword" class="control-label"></label>
+                    <input asp-for="SaltedPassword" class="form-control" />
+                    <span asp-validation-for="SaltedPassword" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PasswordEncrypted" class="control-label"></label>
+                    <input asp-for="PasswordEncrypted" class="form-control" />
+                    <span asp-validation-for="PasswordEncrypted" class="text-danger"></span>
+                </div>*@
+            @*<div class="form-group">
+                    <label asp-for="PersonRole" class="control-label"></label>
+                    <input asp-for="PersonRole" class="form-control" />
+                    <span asp-validation-for="PersonRole" class="text-danger"></span>
+                </div>*@
+            <div class="form-group">
+                Role: <br />
+                <input type="radio" name="role" value="player" /> Player <br />
+                <input type="radio" name="role" value="manager" /> Manager <br />
+                <input type="radio" name="role" value="trainer" /> Trainer <br />
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="AdminPermission" /> @Html.DisplayNameFor(model => model.AdminPermission)
+                </label>
+            </div>
+            @*<div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                    </label>
+                </div>*@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - FootballManager</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body class="back">
+	<header>
+		<nav class="nnn navbar nav-tabs navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+			<div class="container">
+				<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FootballManager</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+						aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+					<ul class="navbar-nav flex-grow-1">
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+						</li>
+						@*<li class="nav-item">
+						<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+						</li>*@
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Team" asp-action="Index">Team</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Person" asp-action="Index">Person</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="Index">Game</a>
+						</li>
+						@*<li class="nav-item">
+						<a class="nav-link text-dark" asp-area="" asp-controller="Team" asp-action="IndexMondayVM">IndexMondayVM</a>
+						</li>*@
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="IndexStatisticVM">IndexStatisticVM</a>
+						</li>
+
+
+
+						@*<li>
+						<a href="#" class="thumbnail">
+						<input type="submit" class="btn btn-default" id="btnAdd2" value="Add 2" />
+						</a>
+						</li>*@
+						@*href="@Html.Raw(@TempData["Again"])"*@
+
+						@*<li class="nav-item">
+						<a class="nav-link text-dark" asp-area="" asp-controller="Person" asp-action="">Link...</a>
+						</li>*@
+					</ul>
+					<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+						<ul class="navbar-nav ml-auto">
+
+							<li class="slikaNav">
+								<img src="@Html.Raw(@TempData["Picture"])" alt="avatar" onerror="this.style.display='none'">
+							</li>
+
+
+							<li class="list">
+								<h5 id="mail">@Context.Request.Cookies["email"]</h5> 
+							</li>
+
+							@if (@TempData["LogedIn"] == null)
+							{
+								<li class="nav-item">
+									@*<a class="nav-link text-dark" asp-area="" asp-controller="Person" asp-action="Login">Login</a>*@
+									<a href="#myModal" id="@Html.Raw(@TempData["AgainModal"])" @*ng-click="buttonClick()"*@
+								   class="nav-link text-dark" data-toggle="modal"><b>Login</b></a>
+								</li>
+							}
+							else
+							{
+								<li class="nav-link"><a href="#logOutModal" class="nav-link text-dark" id="@Html.Raw(@TempData["AgainLogOutModal"])" data-toggle="modal"><b>Logout</b></a></li>
+							}
+						</ul>
+					</div>
+				</div>
+
+				<!-- Login Modal HTML -->
+				<div id="myModal" class="modal fade">
+					<div class="modal-dialog modal-login">
+						<div class="modal-content">
+							<div class="modal-header">
+								<div class="avatar">
+									<img src="/lib/Images/Lego.png" class="rounded rounded-circle" alt="Avatar">
+								</div>
+								<h4 class="modal-title">Member Login</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							</div>
+							<div class="modal-body">
+								<form method="post" action="http://localhost:37094/Person/LoginPost">
+									<div class="form-group">
+										<input type="text" class="form-control" name="email" placeholder="email" required="required">
+									</div>
+									<div class="form-group">
+										<input type="password" class="form-control" name="password" placeholder="Password" required="required">
+									</div>
+									<div class="form-group">
+										<button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
+									</div>
+
+									<div>
+										<h5 class="text-center">@Html.Raw(@TempData["errorMsg"])</h5>
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<a href="#">Forgot Password?</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- LogOut Modal HTML -->
+				<div id="logOutModal" class="modal fade">
+					<div class="modal-dialog modal-login">
+						<div class="modal-content">
+							<div class="modal-header">
+								<div class="avatar">
+									<img src="@Html.Raw(@TempData["Picture"])" class="rounded rounded-circle" alt="Avatar">
+								</div>
+								<h4 class="modal-title">Member Logout</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							</div>
+							<div class="modal-body">
+								<form method="post" action="http://localhost:37094/Person/LogOut">
+									<div class="form-group">
+										<input type="text" class="form-control" name="email" placeholder="email" required="required">
+									</div>
+									<div class="form-group">
+										<input type="password" class="form-control" name="password" placeholder="Password" required="required">
+									</div>
+									<div class="form-group">
+										<button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
+									</div>
+
+									<div>
+										<h5 class="text-center">@Html.Raw(@TempData["errorMsgLogOut1"])</h5>
+										<h5 class="text-center">@Html.Raw(@TempData["errorMsgLogOut2"])</h5>
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<a href="#">Forgot Password?</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+
+
+			</div>
+		</nav>
+	</header>
+	<div class="container">
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
+	<div>
+		@{
+			string csvStr = DateTime.Now + FootballManager.Classes.Logger.seperator + Context.Connection.RemoteIpAddress + FootballManager.Classes.Logger.seperator + Context.Request.Path + FootballManager.Classes.Logger.seperator + Context.Request.Method + FootballManager.Classes.Logger.seperator + Context.Request.Headers["User-Agent"].ToString().Replace(FootballManager.Classes.Logger.seperator, ",") + FootballManager.Classes.Logger.seperator + Context.Request.Cookies["guid"];
+			FootballManager.Classes.Logger.AppendText(csvStr);
+		}
+	</div>
+	<footer class="border-top footer text-muted">
+		<div class="container">
+			&copy; 2022 - FootballManager - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+		</div>
+	</footer>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

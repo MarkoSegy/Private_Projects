@@ -1,0 +1,52 @@
+﻿@model IEnumerable<FootballManager.Models.ViewModels.StatistikVM>
+
+@{
+    ViewData["Title"] = "IndexStatisticVM";
+}
+
+<h1>IndexStatisticVM</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TeamAnzahl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonAnzahl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GamesAnzahl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonsPlayInTeams)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeamAnzahl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PersonAnzahl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GamesAnzahl)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.PersonsPlayInTeams)
+            </td>
+            @*<td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>*@
+        </tr>
+}
+    </tbody>
+</table>

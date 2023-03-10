@@ -1,0 +1,68 @@
+﻿@model IEnumerable<FootballManager.Models.Game>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+@if (Context.Request.Cookies["AdminPermission"] == "True")
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GameDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GoalsTeam1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GoalsTeam2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GameDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GoalsTeam1)
+                    <img class="rounded-circle" src="@item.Team1.ImagePath" style="width: 50px" height="50" />
+                    @Html.DisplayFor(modelItem => item.Team1.Name)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GoalsTeam2)
+                    <img class="rounded-circle" src="@item.Team2.ImagePath" style="width: 50px" height="50" />
+                    @Html.DisplayFor(modelItem => item.Team2.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td class="align-middle">
+                    <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i>Edit </a> |
+                    <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye"></i>Details </a> |
+                    <a class="btn btn-danger text-white" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i>Delete </a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

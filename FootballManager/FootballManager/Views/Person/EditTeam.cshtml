@@ -1,0 +1,34 @@
+﻿@model FootballManager.Models.Person
+
+@{
+    ViewData["Title"] = "EditTeam";
+}
+
+<h1>EditTeam</h1>
+
+<h4>Person</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditTeam">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <select asp-for="Team.Name">
+                @foreach (var item in FootballManager.Controllers.TeamController.teamListe)
+                {
+                    <option value="@item.Name">@item.Name</option>
+                }
+            </select>
+            <br />
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,71 @@
+﻿@model FootballManager.Models.Game
+
+@{
+    ViewData["Title"] = "CreateRandom";
+}
+
+<h1>Random Created Game</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+            <label asp-for="Id" class="control-label"></label>
+            <input asp-for="Id" class="form-control" />
+            <span asp-validation-for="Id" class="text-danger"></span>
+            </div>*@
+            @{
+                //var game = ViewData["Team1"] as Game;
+                var game = (Game)ViewData["GameForView"];
+            }
+            
+            @*<img src="@ViewBag.GameForView.Team1.ImagePath" />*@
+            @*<h4>@ViewBag.GameForView.Team1.Name</h4>*@
+            @*<h1>@game.Team1.Name</h1>*@
+
+            <br />
+            <h5>Team 1: <img class="rounded-circle" src="@game.Team1.ImagePath" style="width: 50px" height="50" /> @game.Team1.Name </h5>
+            <h5>Team 2: <img class="rounded-circle" src="@game.Team2.ImagePath" style="width: 50px" height="50" /> @game.Team2.Name </h5>
+
+            <br />
+            <div class="form-group">
+                <label asp-for="GameDate" class="control-label"></label>
+                <input asp-for="GameDate" class="form-control" />
+                <span asp-validation-for="GameDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GoalsTeam1" class="control-label"></label>
+                <input asp-for="GoalsTeam1" class="form-control" />
+                <span asp-validation-for="GoalsTeam1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GoalsTeam2" class="control-label"></label>
+                <input asp-for="GoalsTeam2" class="form-control" />
+                <span asp-validation-for="GoalsTeam2" class="text-danger"></span>
+            </div>
+            @*<div class="form-group form-check">
+            <label class="form-check-label">
+            <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+            </label>
+            </div>*@
+
+
+            @*Hier schicke Ich die Namen des Teams vom View zum Controller*@
+            <input type="hidden" asp-for="Team1.Name" name="Team1.Name" value="@game.Team1.Name" />
+            <input type="hidden" asp-for="Team2.Name" name="Team2.Name" value="@game.Team2.Name" />
+
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
